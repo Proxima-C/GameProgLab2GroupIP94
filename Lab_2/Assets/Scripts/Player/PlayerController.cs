@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        _moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        var inputX = Input.GetAxis("Horizontal");
+        var inputZ = Input.GetAxis("Vertical");
+        _moveDir = new Vector3(inputX, 0, inputZ).normalized;
 
         var moveVectore = transform.TransformDirection(_moveDir) * _moveSpeed;
         _rb.velocity = new Vector3(moveVectore.x, _rb.velocity.y, moveVectore.z);
