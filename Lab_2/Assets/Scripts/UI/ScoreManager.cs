@@ -12,9 +12,9 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = $"Score: {score}";
     }
 
-    public void AddPoint()
+    public void IncreaseScore(int amount)
     {
-        score++;
+        score += amount;
         scoreText.text = $"Score: {score}";
     }
 }

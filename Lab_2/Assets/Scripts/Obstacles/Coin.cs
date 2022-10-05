@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Coin : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    [Range(1, 10)]
+    [SerializeField] private int value = 1;
+    
+    private ScoreManager _scoreManager;
 
     private void OnTriggerEnter(Collider other)
     {
-        scoreManager = FindObjectOfType<ScoreManager>();
-        
+        _scoreManager = FindObjectOfType<ScoreManager>();
+
         if (other.gameObject.CompareTag("Player"))
         {
-            scoreManager.AddPoint();
+            _scoreManager.IncreaseScore(value);
             Destroy(gameObject);
         }
     }
